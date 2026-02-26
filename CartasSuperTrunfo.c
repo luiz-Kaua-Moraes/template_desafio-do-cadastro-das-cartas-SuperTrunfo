@@ -9,9 +9,9 @@ int main()
     char estado;
     char codigo_carta[5];
     char nome_cidade[30];
-    unsigned long int populacao; //Mudança do tipo de variável para aceitar valores maiores
-    int ponto_turistico;
+    int populacao, qntd_pontoTuristico; 
     float area, pib;
+   
 
     float desnsidade_populacional;
     float pib_PerCapta;
@@ -22,8 +22,7 @@ int main()
     char estado2;
     char codigo_carta2[5];
     char nome_cidade2[30];
-    unsigned long int populacao2; //Mudança do tipo de variável para aceitar valores maiores
-    int ponto_turistico2;
+    int populacao2, qntd_pontoTuristico2;
     float area2, pib2;
 
     float desnsidade_populacional2;
@@ -51,7 +50,7 @@ int main()
     scanf(" %s", nome_cidade);
 
     printf("Digite a quantidade de habitantes: ");
-    scanf(" %lu", &populacao);
+    scanf(" %d", &populacao);
 
     printf("Digite a area da cidade: ");
     scanf(" %f", &area);
@@ -60,7 +59,7 @@ int main()
     scanf(" %f", &pib);
 
     printf("Digite a quantidades de pontos turíscos: ");
-    scanf(" %d", &ponto_turistico);
+    scanf(" %d", &qntd_pontoTuristico);
 
 
     
@@ -78,7 +77,7 @@ int main()
     scanf(" %s", nome_cidade2);
 
     printf("Digite a quantidade de habitantes: ");
-    scanf(" %lu", &populacao2);
+    scanf(" %d", &populacao2);
 
     printf("Digite a area da cidade: ");
     scanf(" %f", &area2);
@@ -87,7 +86,7 @@ int main()
     scanf(" %f", &pib2);
 
     printf("Digite a quantidades de pontos turíscos: ");
-    scanf(" %d", &ponto_turistico2);
+    scanf(" %d", &qntd_pontoTuristico2);
 
 
 
@@ -102,10 +101,10 @@ int main()
 
     //Cálculo do super poder
     //carta1
-    super_poder =  populacao + area + pib + ponto_turistico + pib_PerCapta + (area/populacao);
+    super_poder =  populacao + area + pib + qntd_pontoTuristico + pib_PerCapta + (area/populacao);
 
     //carta2
-    super_poder2 =  populacao2 + area2 + pib2 + ponto_turistico2 + pib_PerCapta2 + (area2/populacao2);
+    super_poder2 =  populacao2 + area2 + pib2 + qntd_pontoTuristico2 + pib_PerCapta2 + (area2/populacao2);
     
     
     // Mostra ao usuário os dados cadastrados da carta 1
@@ -117,10 +116,10 @@ int main()
     printf("Estado: %c\n", estado);
     printf("Código: %s\n", codigo_carta);
     printf("Nome da cidade: %s\n", nome_cidade);
-    printf("População: %lu habitantes\n", populacao);
+    printf("População: %d habitantes\n", populacao);
     printf("Área: %.2fKm²\n", area);
     printf("PIB: %.2f\n", pib);
-    printf("Número de pontos turísticos: %d\n", ponto_turistico);
+    printf("Número de pontos turísticos: %d\n", qntd_pontoTuristico);
     printf("Densidade Populacional: %.2f\n",desnsidade_populacional);
     printf("PIB per Capita: R$%.2f\n", pib_PerCapta);
 
@@ -130,25 +129,111 @@ int main()
     printf("Estado: %c\n", estado2);
     printf("Código: %s\n", codigo_carta2);
     printf("Nome da cidade: %s\n", nome_cidade2);
-    printf("População: %lu\n", populacao2);
+    printf("População: %d\n", populacao2);
     printf("Área: %.2fKm²\n", area2);
     printf("PIB: %.2f\n", pib2);
-    printf("Número de pontos turísticos: %d\n", ponto_turistico2);
+    printf("Número de pontos turísticos: %d\n", qntd_pontoTuristico2);
     printf("Densidade Populacional: %.2f\n",desnsidade_populacional2);
     printf("PIB per Capita: R$%.2f\n\n", pib_PerCapta2);
 
-    //Exibição de qual carta venceu, faz a comparação usando apenas operadores relcionais
-    printf("Comparação das cartas\n\n");
+    //Comparacao dos atributos entre carta 1 e 2
+    
+    printf("Comparação de cartas\n\n"); 
+    printf("Atributo: População\n\n");
 
-    printf("Pupulação: Carta 1 venceu (%d)\n",populacao >= populacao2);
-    printf("Área: Carta 2 venceu (%d)\n",area2 >= area);
-    printf("PIB: Carta 1 venceu (%d)\n",pib >= pib2);
-    printf("Pontos turísticos: Carta 2 venceu (%d)\n",ponto_turistico2 >= ponto_turistico);
-    printf("Densidade populacional: Carta 2 venceu (%d)\n",desnsidade_populacional2 <= desnsidade_populacional);
-    printf("PIB per Capta: Carta 1 venceu (%d)\n",pib_PerCapta >= pib_PerCapta2);
-    printf("Super Poder: Carta 1 venceu (%d)\n",super_poder >= super_poder2);
+    printf("Carta 1 - %s: %d\n", nome_cidade, populacao);
+    printf("Carta 2 - %s: %d\n", nome_cidade2, populacao2);
 
-   
+    //Pupulação
+    if(populacao >= populacao2)
+    {
+        printf("Carta 1 venceu!\n\n");
+    }
+    else
+    {
+        printf("Carta 2 venceu!\n\n");
+    }
+
+    printf("Atributo: Área\n\n");
+
+    printf("Carta 1 - %s: %.2f\n", nome_cidade, area);
+    printf("Carta 2 - %s: %.2f\n", nome_cidade2, area2);
+
+    //Área
+    if(area > area2)
+    {
+        printf("Carta 1 venceu!\n\n");
+    }
+    else
+    {
+        printf("Carta 2 venceu!\n\n");
+    }
+
+    printf("Atributo: PIB\n\n");
+
+    printf("Carta 1 - %s: %.2f\n", nome_cidade, pib);
+    printf("Carta 2 - %s: %.2f\n", nome_cidade2, pib2);
+
+    //PIB
+    if(pib > pib2)
+    {
+        printf("Carta 1 venceu!\n\n");
+    }
+
+    else
+    {
+        printf("Carta 2 venceu!\n\n");
+    }
+
+    printf("Atributo: Quantidade de pontos turísticos\n\n");
+
+    printf("Carta 1 - %s: %d\n", nome_cidade, qntd_pontoTuristico);
+    printf("Carta 2 - %s: %d\n", nome_cidade2, qntd_pontoTuristico2);
+
+    // Quantidade de pontos turísticos
+    if(qntd_pontoTuristico > qntd_pontoTuristico2)
+    {
+        printf("Carta 1 venceu!\n\n");
+    } 
+
+    else
+    {
+        printf("Carta 2 venceu!\n\n");
+    }
+
+     printf("Atributo: Desnidade populacional\n\n");
+
+    printf("Carta 1 - %s: %.2f\n", nome_cidade, desnsidade_populacional);
+    printf("Carta 2 - %s: %.2f\n", nome_cidade2, desnsidade_populacional2);
+
+    //Densidade populacional
+    if(desnsidade_populacional > desnsidade_populacional2)
+    {
+        printf("Carta 2 venceu!\n\n");
+    }
+
+    else
+    {
+        printf("Carta 1 venceu!\n\n");
+    }
+
+    printf("Atributo: Pib per Capta\n\n");
+
+    printf("Carta 1 - %s: %.2f\n", nome_cidade, pib_PerCapta);
+    printf("Carta 2 - %s: %.2f\n", nome_cidade2, pib_PerCapta2);
+
+    //PIB per Capta
+    if(pib_PerCapta > pib_PerCapta2)
+    {
+        printf("Carta 1 venceu!\n\n");
+    }
+
+    else
+    {
+        printf("Carta 2 venceu!\n\n");
+    }
+
+    
 
     return 0;
 }
